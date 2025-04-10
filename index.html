@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Prompt Yöneticisi</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>
+            <i class="fas fa-magic"></i>
+            Influencer Prompt Yöneticisi
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="#karakterler" class="active"><i class="fas fa-user"></i> Karakterler</a></li>
+                <li><a href="#kiyafetler"><i class="fas fa-tshirt"></i> Kıyafetler</a></li>
+                <li><a href="#mekanlar"><i class="fas fa-map-marker-alt"></i> Mekanlar</a></li>
+                <li><a href="#diger"><i class="fas fa-bookmark"></i> Diğer Promptlar</a></li>
+                <li><a href="#fotograf-turleri"><i class="fas fa-camera"></i> Fotoğraf Türleri</a></li>
+                <li><a href="#mixer"><i class="fas fa-blender"></i> Prompt Mixer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Karakterler Bölümü -->
+        <section id="karakterler" class="active-section">
+            <div class="section-header">
+                <h2><i class="fas fa-user"></i> Karakterler</h2>
+                <button id="yeni-karakter-btn" class="ekle-btn"><i class="fas fa-plus"></i> Yeni Karakter</button>
+            </div>
+            
+            <div class="filter-sort">
+                <input type="text" id="karakter-ara" placeholder="Karakter ara...">
+                <select id="karakter-sirala">
+                    <option value="isim-az">İsim (A-Z)</option>
+                    <option value="isim-za">İsim (Z-A)</option>
+                    <option value="tarih-yeni">Tarih (Yeni-Eski)</option>
+                    <option value="tarih-eski">Tarih (Eski-Yeni)</option>
+                </select>
+            </div>
+
+            <div id="karakterler-listesi" class="items-grid">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+
+            <!-- Karakter Ekleme/Düzenleme Modal -->
+            <div id="karakter-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="karakter-modal-baslik">Yeni Karakter Ekle</h3>
+                    <form id="karakter-form">
+                        <div class="form-group">
+                            <label for="karakter-isim">İsim:</label>
+                            <input type="text" id="karakter-isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="karakter-yas">Yaş:</label>
+                            <input type="number" id="karakter-yas" min="1" max="120">
+                        </div>
+                        <div class="form-group">
+                            <label for="karakter-boy">Boy (cm):</label>
+                            <input type="number" id="karakter-boy" min="50" max="250">
+                        </div>
+                        <div class="form-group">
+                            <label for="karakter-prompt">Karakter Açıklaması:</label>
+                            <textarea id="karakter-prompt" rows="5" required></textarea>
+                        </div>
+                        
+                        <!-- Yüz Görseli Seçimi -->
+                        <div class="form-group">
+                            <label>Yüz Görseli:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="karakter-gorsel-yuz-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="karakter-gorsel-yuz-dosya" class="file-input" accept="image/*">
+                                    <span id="karakter-gorsel-yuz-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="karakter-gorsel-yuz">URL ile ekle:</label>
+                                    <input type="text" id="karakter-gorsel-yuz" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="karakter-gorsel-yuz-onizleme" class="image-preview"></div>
+                        </div>
+                        
+                        <!-- Boy Görseli Seçimi -->
+                        <div class="form-group">
+                            <label>Boy Görseli:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="karakter-gorsel-boy-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="karakter-gorsel-boy-dosya" class="file-input" accept="image/*">
+                                    <span id="karakter-gorsel-boy-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="karakter-gorsel-boy">URL ile ekle:</label>
+                                    <input type="text" id="karakter-gorsel-boy" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="karakter-gorsel-boy-onizleme" class="image-preview"></div>
+                        </div>
+                        
+                        <button type="submit" class="kaydet-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kıyafetler Bölümü -->
+        <section id="kiyafetler">
+            <div class="section-header">
+                <h2><i class="fas fa-tshirt"></i> Kıyafetler</h2>
+                <button id="yeni-kiyafet-btn" class="ekle-btn"><i class="fas fa-plus"></i> Yeni Kıyafet</button>
+            </div>
+            
+            <div class="filter-sort">
+                <input type="text" id="kiyafet-ara" placeholder="Kıyafet ara...">
+                <select id="kiyafet-sirala">
+                    <option value="isim-az">İsim (A-Z)</option>
+                    <option value="isim-za">İsim (Z-A)</option>
+                    <option value="tarih-yeni">Tarih (Yeni-Eski)</option>
+                    <option value="tarih-eski">Tarih (Eski-Yeni)</option>
+                </select>
+            </div>
+
+            <div id="kiyafetler-listesi" class="items-grid">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+
+            <!-- Kıyafet Ekleme/Düzenleme Modal -->
+            <div id="kiyafet-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="kiyafet-modal-baslik">Yeni Kıyafet Ekle</h3>
+                    <form id="kiyafet-form">
+                        <div class="form-group">
+                            <label for="kiyafet-isim">Kıyafet İsmi:</label>
+                            <input type="text" id="kiyafet-isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kiyafet-kategori">Kategori:</label>
+                            <select id="kiyafet-kategori">
+                                <option value="ust">Üst Giyim</option>
+                                <option value="alt">Alt Giyim</option>
+                                <option value="elbise">Elbise</option>
+                                <option value="ayakkabi">Ayakkabı</option>
+                                <option value="aksesuar">Aksesuar</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="kiyafet-prompt">Kıyafet Açıklaması/Prompt:</label>
+                            <textarea id="kiyafet-prompt" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="kiyafet-gorsel-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="kiyafet-gorsel-dosya" class="file-input" accept="image/*">
+                                    <span id="kiyafet-gorsel-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="kiyafet-gorsel">URL ile ekle:</label>
+                                    <input type="text" id="kiyafet-gorsel" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="kiyafet-gorsel-onizleme" class="image-preview"></div>
+                        </div>
+                        <button type="submit" class="kaydet-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mekanlar Bölümü -->
+        <section id="mekanlar">
+            <div class="section-header">
+                <h2><i class="fas fa-map-marker-alt"></i> Mekanlar</h2>
+                <button id="yeni-mekan-btn" class="ekle-btn"><i class="fas fa-plus"></i> Yeni Mekan</button>
+            </div>
+            
+            <div class="filter-sort">
+                <input type="text" id="mekan-ara" placeholder="Mekan ara...">
+                <select id="mekan-sirala">
+                    <option value="isim-az">İsim (A-Z)</option>
+                    <option value="isim-za">İsim (Z-A)</option>
+                    <option value="tarih-yeni">Tarih (Yeni-Eski)</option>
+                    <option value="tarih-eski">Tarih (Eski-Yeni)</option>
+                </select>
+            </div>
+
+            <div id="mekanlar-listesi" class="items-grid">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+
+            <!-- Mekan Ekleme/Düzenleme Modal -->
+            <div id="mekan-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="mekan-modal-baslik">Yeni Mekan Ekle</h3>
+                    <form id="mekan-form">
+                        <div class="form-group">
+                            <label for="mekan-isim">Mekan İsmi:</label>
+                            <input type="text" id="mekan-isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mekan-kategori">Kategori:</label>
+                            <select id="mekan-kategori">
+                                <option value="ic">İç Mekan</option>
+                                <option value="dis">Dış Mekan</option>
+                                <option value="dogal">Doğal Alan</option>
+                                <option value="sehir">Şehir</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mekan-prompt">Mekan Açıklaması/Prompt:</label>
+                            <textarea id="mekan-prompt" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="mekan-gorsel-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="mekan-gorsel-dosya" class="file-input" accept="image/*">
+                                    <span id="mekan-gorsel-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="mekan-gorsel">URL ile ekle:</label>
+                                    <input type="text" id="mekan-gorsel" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="mekan-gorsel-onizleme" class="image-preview"></div>
+                        </div>
+                        <button type="submit" class="kaydet-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diğer Promptlar Bölümü -->
+        <section id="diger">
+            <div class="section-header">
+                <h2><i class="fas fa-bookmark"></i> Diğer Promptlar</h2>
+                <button id="yeni-diger-btn" class="ekle-btn"><i class="fas fa-plus"></i> Yeni Prompt</button>
+            </div>
+            
+            <div class="filter-sort">
+                <input type="text" id="diger-ara" placeholder="Prompt ara...">
+                <select id="diger-sirala">
+                    <option value="isim-az">İsim (A-Z)</option>
+                    <option value="isim-za">İsim (Z-A)</option>
+                    <option value="tarih-yeni">Tarih (Yeni-Eski)</option>
+                    <option value="tarih-eski">Tarih (Eski-Yeni)</option>
+                </select>
+            </div>
+
+            <div id="diger-listesi" class="items-grid">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+
+            <!-- Diğer Prompt Ekleme/Düzenleme Modal -->
+            <div id="diger-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="diger-modal-baslik">Yeni Prompt Ekle</h3>
+                    <form id="diger-form">
+                        <div class="form-group">
+                            <label for="diger-isim">Prompt İsmi:</label>
+                            <input type="text" id="diger-isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="diger-kategori">Kategori:</label>
+                            <input type="text" id="diger-kategori" placeholder="Özel kategori girin">
+                        </div>
+                        <div class="form-group">
+                            <label for="diger-prompt">Prompt İçeriği:</label>
+                            <textarea id="diger-prompt" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="diger-gorsel-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="diger-gorsel-dosya" class="file-input" accept="image/*">
+                                    <span id="diger-gorsel-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="diger-gorsel">URL ile ekle:</label>
+                                    <input type="text" id="diger-gorsel" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="diger-gorsel-onizleme" class="image-preview"></div>
+                        </div>
+                        <button type="submit" class="kaydet-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fotoğraf Türleri Bölümü -->
+        <section id="fotograf-turleri">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Fotoğraf Türleri</h2>
+                <p class="section-description">Yapay zeka görüntü üretiminde kullanabileceğiniz temel fotoğraf çekim türleri ve açıları.</p>
+            </div>
+
+            <div class="content-container">
+                <div class="content-section">
+                    <h3 class="content-title"><i class="fas fa-images"></i> Çekim Türleri</h3>
+                    <p class="content-description">Fotoğrafçılık ve görsel içerik üretiminde kullanılan temel çekim türleri:</p>
+                    
+                    <div class="fotograf-turleri" id="cekim-turleri-listesi">
+                        <!-- JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3 class="content-title"><i class="fas fa-camera-retro"></i> Çekim Açıları</h3>
+                    <p class="content-description">Fotoğraf çekiminde konuyu farklı şekillerde göstermek için kullanılan açılar:</p>
+                    
+                    <div class="fotograf-turleri" id="cekim-acilari-listesi">
+                        <!-- JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <h3 class="content-title"><i class="fas fa-lightbulb"></i> Kullanım İpuçları</h3>
+                    <div class="tips-container">
+                        <div class="tip-item">
+                            <h4><i class="fas fa-check-circle"></i> Doğru Çekim Türünü Seçin</h4>
+                            <p>İletmek istediğiniz duyguya ve göstermek istediğiniz detay seviyesine göre çekim türünü belirtin.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4><i class="fas fa-check-circle"></i> Açıları Etkili Kullanın</h4>
+                            <p>Karakterinizin daha güçlü görünmesini istiyorsanız aşağıdan çekim, daha kırılgan görünmesini istiyorsanız yukarıdan çekim açısını tercih edin.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4><i class="fas fa-check-circle"></i> Bağlam İçin Çevresel Portreleri Deneyin</h4>
+                            <p>Karakterinizin ortamını ve hikayesini göstermek için çevresel portre türünü kullanın.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <h3 class="content-title"><i class="fas fa-magic"></i> Örnek Promptlar</h3>
+                    <div class="example-prompts">
+                        <div class="example-prompt">
+                            <h4>Portre Çekim Örneği</h4>
+                            <div class="prompt-box">
+                                <p>Genç kadın influencer, 25 yaşında, portre çekimi, doğal ışık, shallow depth of field, profesyonel fotoğrafçılık, net odaklanma, yüksek çözünürlük</p>
+                                <button class="kopyala-btn" onclick="promptKopyala('Genç kadın influencer, 25 yaşında, portre çekimi, doğal ışık, shallow depth of field, profesyonel fotoğrafçılık, net odaklanma, yüksek çözünürlük')">
+                                    <i class="fas fa-copy"></i> Kopyala
+                                </button>
+                            </div>
+                        </div>
+                        <div class="example-prompt">
+                            <h4>Tam Boy Çekim Örneği</h4>
+                            <div class="prompt-box">
+                                <p>Genç kadın influencer, tam boy çekim (full-length shot), açık havada, doğal ışık, profesyonel fotoğrafçılık, yüksek çözünürlük</p>
+                                <button class="kopyala-btn" onclick="promptKopyala('Genç kadın influencer, tam boy çekim (full-length shot), açık havada, doğal ışık, profesyonel fotoğrafçılık, yüksek çözünürlük')">
+                                    <i class="fas fa-copy"></i> Kopyala
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prompt Mixer Bölümü -->
+        <section id="mixer">
+            <div class="section-header">
+                <h2><i class="fas fa-blender"></i> Prompt Mixer</h2>
+                <button id="temizle-mixer-btn" class="ekle-btn danger-btn"><i class="fas fa-eraser"></i> Temizle</button>
+            </div>
+            
+            <div class="mixer-container">
+                <div class="mixer-selectors">
+                    <div class="mixer-selector">
+                        <h3><i class="fas fa-user"></i> Karakter</h3>
+                        <select id="mixer-karakter-select">
+                            <option value="">Karakter seçiniz...</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                        <div id="mixer-karakter-preview" class="mixer-preview">
+                            <!-- Seçilen karakter burada gösterilecek -->
+                        </div>
+                    </div>
+                    
+                    <div class="mixer-selector">
+                        <h3><i class="fas fa-tshirt"></i> Kıyafet</h3>
+                        <select id="mixer-kiyafet-select">
+                            <option value="">Kıyafet seçiniz...</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                        <div id="mixer-kiyafet-preview" class="mixer-preview">
+                            <!-- Seçilen kıyafet burada gösterilecek -->
+                        </div>
+                    </div>
+                    
+                    <div class="mixer-selector">
+                        <h3><i class="fas fa-map-marker-alt"></i> Mekan</h3>
+                        <select id="mixer-mekan-select">
+                            <option value="">Mekan seçiniz...</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                        <div id="mixer-mekan-preview" class="mixer-preview">
+                            <!-- Seçilen mekan burada gösterilecek -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mixer-result">
+                    <div class="mixer-visual-result">
+                        <h3>Görsel Önizleme</h3>
+                        <div id="mixer-visual-preview" class="mixer-visual">
+                            <!-- Birleştirilmiş görsel önizleme burada gösterilecek -->
+                            <div class="mixer-empty-state">
+                                <i class="fas fa-image"></i>
+                                <p>Karakter, kıyafet ve mekan seçtikçe görsel önizleme oluşturulacak</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mixer-prompt-result">
+                        <div class="mixer-prompt-header">
+                            <h3>Birleştirilmiş Prompt</h3>
+                            <button id="mixer-kopyala-btn" class="kopyala-btn"><i class="fas fa-copy"></i> Promptu Kopyala</button>
+                        </div>
+                        <textarea id="mixer-prompt-output" readonly rows="10" placeholder="Karakter, kıyafet ve mekan seçtikçe birleştirilmiş prompt burada oluşturulacak..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Influencer Prompt Yöneticisi | Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Silme Onay Modalı -->
+    <div id="sil-onay-modal" class="modal">
+        <div class="modal-content">
+            <h3>Silme İşlemi</h3>
+            <p>Bu öğeyi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+            <div class="modal-buttons">
+                <button id="sil-iptal" class="iptal-btn">İptal</button>
+                <button id="sil-onay" class="sil-btn">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detay Görüntüleme Modalı -->
+    <div id="detay-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="detay-icerik">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/uploads/karakterler/pozlar.js"></script>
+    <script src="assets/uploads/fotograf_turleri/bilgiler.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
