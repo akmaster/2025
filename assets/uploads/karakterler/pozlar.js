@@ -1,38 +1,65 @@
-// Model pozlarının tanımlamaları
+// Karakter pozları tanımlamaları
+// Bu dosya, karakterlere eklenebilecek poz tanımlarını içerir
+
 const pozTanimlari = [
     {
-        id: "poz1",
-        isim: "Plajda Ayakta Duruş",
-        aciklama: "Emma, plajda doğrudan kameraya bakarak ayakta duruyor. Bir kalçaya hafifçe ağırlık vermiş, özgüvenli duruş. Kolları doğal şekilde yanlarında, omuzlar geriye doğru hafif açık. Yüzünde yumuşak bir gülümseme ile saçları hafif rüzgarla savruluyor.",
-        kategori: "ayakta"
+        id: "p001",
+        isim: "Ayakta Doğal Duruş",
+        aciklama: "Karakterin ayakta, rahat ve doğal bir duruşta olduğu temel poz."
     },
     {
-        id: "poz2",
-        isim: "Kumsalda Oturuş",
-        aciklama: "Emma, kumsal üzerinde oturuyor. Bacakları yanına uzatılmış, vücudu hafifçe öne eğik ve bir eli kumun üzerinde destek olarak kullanılmış. Diğer eli saçlarını kulak arkasına atarken, kameraya dönük olarak omuz üzerinden bakıyor. Rahat ve doğal bir poz.",
-        kategori: "oturma"
+        id: "p002",
+        isim: "Oturma Pozu",
+        aciklama: "Karakterin bir sandalye, koltuk veya bankta oturduğu poz."
     },
     {
-        id: "poz3",
-        isim: "Deniz Kenarında Yürüyüş",
-        aciklama: "Emma, sahil boyunca suyun kenarında yürürken yakalanmış dinamik bir poz. Kameraya bakmadan ilerleme hareketi içinde, adım atarken hafif bir salınım. Saçları ve kıyafeti esintide hareket halinde. Su ayak bileklerine kadar vuruyor. Doğal ve canlı bir hareket içinde.",
-        kategori: "hareket"
+        id: "p003",
+        isim: "Yürüyüş Pozu",
+        aciklama: "Yürüyen karakter, adım atarken yakalanmış hareket halinde bir poz."
     },
     {
-        id: "poz4",
-        isim: "Şezlongda Uzanış",
-        aciklama: "Emma, plaj şezlongunda uzanıyor. Vücudu kameraya dönük, başı hafifçe kalkık ve bir eliyle güneş gözlüklerini düzeltiyor. Diğer eli şezlongda dinleniyor. Rahat ve şık bir poz. Güneşin cildi güzelce aydınlattığı, dinlenen bir görüntü.",
-        kategori: "uzanma"
-    },
-    {
-        id: "poz5",
+        id: "p004",
         isim: "Selfie Çekimi",
-        aciklama: "Emma, bir selfie çekiyormuş gibi poz veriyor. Kameraya yakın bir açıda, kolunu uzatmış ve hafifçe yukarıdan çekim açısı. Dudakları hafif aralık doğal bir gülümseme, gözleri doğrudan kameraya bakıyor. Modern ve sosyal medyaya uygun bir poz.",
-        kategori: "selfie"
+        aciklama: "Karakterin kendi fotoğrafını çekiyormuş gibi, bir eli uzatmış pozu."
+    },
+    {
+        id: "p005",
+        isim: "Plaj Pozu",
+        aciklama: "Plajda, kum üzerinde uzanırken veya ayakta dururken bir poz."
+    },
+    {
+        id: "p006",
+        isim: "Dans Pozu",
+        aciklama: "Dans ederken yakalanmış, dinamik ve hareketli bir poz."
+    },
+    {
+        id: "p007",
+        isim: "Gülümseme",
+        aciklama: "Kameraya doğru samimi ve içten bir şekilde gülümseyen yüz ifadesi."
+    },
+    {
+        id: "p008",
+        isim: "Düşünceli Bakış",
+        aciklama: "Düşünceli veya melankolik bir yüz ifadesiyle, uzaklara bakan poz."
+    },
+    {
+        id: "p009",
+        isim: "Kahve/İçecek İçerken",
+        aciklama: "Bir kafe ortamında kahve veya içecek içerken yakalanmış poz."
+    },
+    {
+        id: "p010",
+        isim: "Kameraya Poz Verme",
+        aciklama: "Profesyonel bir çekimde, kameraya doğrudan poz veren duruş."
+    },
+    {
+        id: "p011",
+        isim: "Spor Pozu",
+        aciklama: "Spor yaparken, aktif ve enerjik bir şekilde yakalanmış poz."
+    },
+    {
+        id: "p012",
+        isim: "Alışveriş Pozu",
+        aciklama: "Alışveriş yaparken, alışveriş çantaları ile yakalanmış bir poz."
     }
 ];
-
-// Dışa aktarımı için
-if (typeof module !== 'undefined') {
-    module.exports = pozTanimlari;
-}

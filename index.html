@@ -22,6 +22,7 @@
                 <li><a href="#kiyafetler"><i class="fas fa-tshirt"></i> Kıyafetler</a></li>
                 <li><a href="#mekanlar"><i class="fas fa-map-marker-alt"></i> Mekanlar</a></li>
                 <li><a href="#diger"><i class="fas fa-bookmark"></i> Diğer Promptlar</a></li>
+                <li><a href="#hazir-promptlar"><i class="fas fa-list-check"></i> Hazır Promptlar</a></li>
                 <li><a href="#fotograf-turleri"><i class="fas fa-camera"></i> Fotoğraf Türleri</a></li>
                 <li><a href="#mixer"><i class="fas fa-blender"></i> Prompt Mixer</a></li>
             </ul>
@@ -258,6 +259,74 @@
             </div>
         </section>
 
+        <!-- Hazır Promptlar Bölümü -->
+        <section id="hazir-promptlar">
+            <div class="section-header">
+                <h2><i class="fas fa-list-check"></i> Hazır Promptlar</h2>
+                <button id="yeni-hazir-prompt-btn" class="ekle-btn"><i class="fas fa-plus"></i> Yeni Hazır Prompt</button>
+            </div>
+            
+            <div class="filter-sort">
+                <input type="text" id="hazir-prompt-ara" placeholder="Hazır prompt ara...">
+                <select id="hazir-prompt-sirala">
+                    <option value="isim-az">İsim (A-Z)</option>
+                    <option value="isim-za">İsim (Z-A)</option>
+                    <option value="tarih-yeni">Tarih (Yeni-Eski)</option>
+                    <option value="tarih-eski">Tarih (Eski-Yeni)</option>
+                </select>
+            </div>
+
+            <div id="hazir-promptlar-listesi" class="items-grid">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+
+            <!-- Hazır Prompt Ekleme/Düzenleme Modal -->
+            <div id="hazir-prompt-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 id="hazir-prompt-modal-baslik">Yeni Hazır Prompt Ekle</h3>
+                    <form id="hazir-prompt-form">
+                        <div class="form-group">
+                            <label for="hazir-prompt-isim">Prompt İsmi:</label>
+                            <input type="text" id="hazir-prompt-isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hazir-prompt-kategori">Kategori:</label>
+                            <select id="hazir-prompt-kategori">
+                                <option value="poz">Poz</option>
+                                <option value="mekan">Mekan</option>
+                                <option value="kiyafet">Kıyafet</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hazir-prompt-icerik">Prompt İçeriği:</label>
+                            <textarea id="hazir-prompt-icerik" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Görsel:</label>
+                            <div class="file-input-container">
+                                <div class="file-input-section">
+                                    <label for="hazir-prompt-gorsel-dosya" class="file-input-label">
+                                        <i class="fas fa-folder-open"></i> Dosyadan Seç
+                                    </label>
+                                    <input type="file" id="hazir-prompt-gorsel-dosya" class="file-input" accept="image/*">
+                                    <span id="hazir-prompt-gorsel-dosya-isim" class="file-name">Dosya seçilmedi</span>
+                                </div>
+                                <span class="veya">veya</span>
+                                <div class="url-input-section">
+                                    <label for="hazir-prompt-gorsel">URL ile ekle:</label>
+                                    <input type="text" id="hazir-prompt-gorsel" placeholder="Görsel URL'si">
+                                </div>
+                            </div>
+                            <div id="hazir-prompt-gorsel-onizleme" class="image-preview"></div>
+                        </div>
+                        <button type="submit" class="kaydet-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- Diğer Promptlar Bölümü -->
         <section id="diger">
             <div class="section-header">
@@ -484,8 +553,11 @@
         </div>
     </div>
 
+    <!-- Verileri içeren script dosyaları -->
     <script src="assets/uploads/karakterler/pozlar.js"></script>
     <script src="assets/uploads/fotograf_turleri/bilgiler.js"></script>
-    <script src="assets/js/script.js"></script>
+    
+    <!-- Ana uygulama - Modül yapısı kullanıyor -->
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
